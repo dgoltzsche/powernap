@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3.5
 #
 #    powernapd - monitor a system process table; if IDLE amount of time
 #               goes by with no MONITORED_PROCESSES running, run ACTION
@@ -32,7 +32,6 @@ import socket, traceback
 import struct
 from powernap import powernap
 
-
 # Initialize Powernap. This initialization loads the config file.
 try:
     powernap = powernap.PowerNap()
@@ -43,9 +42,9 @@ except:
 
 # Define globals
 global LOCK, CONFIG, MONITORS
-LOCK = "/var/run/%s.pid" % powernap.PKG
+LOCK = "/run/%s.pid" % powernap.PKG
 LOG = "/var/log/%s.log" % powernap.PKG
-POWERSAVE_FLAG = "/var/run/%s/powersave" % powernap.PKG
+POWERSAVE_FLAG = "/run/%s/powersave" % powernap.PKG
 
 logging.basicConfig(filename=LOG, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d_%H:%M:%S', level=logging.DEBUG,)
 
@@ -57,9 +56,10 @@ def debug(level, msg):
 # Generic error function
 def error(msg):
     debug(logging.ERROR, msg)
+    print("Generic error %s." % msg)
     sys.exit(1)
 
-# Lock function, using a pidfile in /var/run
+# Lock function, using a pidfile in /run
 def establish_lock():
     if os.path.exists(LOCK):
         f = open(LOCK,'r')
@@ -140,8 +140,8 @@ def take_recover_action():
     unflag_powersave()
     for monitor in MONITORS:
         monitor._absent_seconds = 0
-    if os.path.exists("/var/run/powernap.state"):
-       os.unlink("/var/run/powernap.state")
+    if os.path.exists("/run/powernap.state"):
+       os.unlink("/run/powernap.state")
     # Re-enable SERVICES/MODULES when waking from PowerSave
     # TODO: This should probably go into their own executable.
     if powernap.KERN_MODULES:

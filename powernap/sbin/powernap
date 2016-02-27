@@ -43,7 +43,7 @@ best_effort() {
 }
 
 # Raise the flag
-echo "$ACTION_METHOD" > /var/run/powernap.state
+echo "$ACTION_METHOD" > /run/powernap.state
 
 case $ACTION_METHOD in
 	0)
