@@ -34,12 +34,17 @@ def get_interrupts():
     f = open("/proc/interrupts", "r")
     for line in f.readlines():
         items = line.split()
-        source = items.pop()
+        source = items.pop() 
         if source == "i8042" or source == "keyboard" or source == "mouse":
             items.pop(0)
             items.pop()
             for i in items:
-                interrupts += int(i)
+                if i == "IO-APIC": 
+                    continue
+                try:
+                    interrupts += int(i)
+                except:
+                    print("Could not append interrupt, because can not be converted to integer.")
     f.close()
     return interrupts
 
