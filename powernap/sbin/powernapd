@@ -56,7 +56,6 @@ def debug(level, msg):
 # Generic error function
 def error(msg):
     debug(logging.ERROR, msg)
-    print("Generic error %s." % msg)
     sys.exit(1)
 
 # Lock function, using a pidfile in /run
@@ -85,9 +84,12 @@ def establish_lock():
 
 # Clean up lock file on termination signals
 def signal_handler(signal, frame):
+    print("signal_handler()")
     if os.path.exists(LOCK):
+        print("removing PID file %s" % LOCK)
         os.remove(LOCK)
     debug(logging.INFO, "Stopping %s" % powernap.PKG)
+    print("exiting powernapd.")
     sys.exit(1)
 
 # Handler warns users when an USB Input device has been connected or
