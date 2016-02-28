@@ -79,4 +79,4 @@ install -Dm644 "$srcdir/powernap-$pkgver/man/powerwake-now.8" "$pkgdir/usr/share
 install -Dm644 "$srcdir/powernap-$pkgver/config" "$pkgdir/usr/share/powernap/config"
 }
 
-md5sums=('be7d58f67593ce664008ecda1f6b88b4')
+md5sums=('cf560814c7bb3f4d31bd6791a84c67a2')
