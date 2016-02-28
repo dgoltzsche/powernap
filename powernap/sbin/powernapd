@@ -336,10 +336,10 @@ def daemonize (stdin="/dev/null", stdout="/var/log/%s.log" % powernap.PKG, stder
 
 # Main program
 if __name__ == '__main__':
-    # Ensure that only one instance runs
-    establish_lock()
-    daemonize()
     try:
+        # Ensure that only one instance runs
+        establish_lock()
+        daemonize()
         # Run the main powernapd loop
         MONITORS = powernap.get_monitors()
         debug(logging.INFO, "Starting %s" % powernap.PKG)

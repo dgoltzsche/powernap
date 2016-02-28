@@ -34,11 +34,11 @@ best_effort() {
 	if [ -x "/etc/$PKG/action" ]; then
 		exec /etc/$PKG/action
 	elif pm-is-supported --suspend; then
-		exec /usr/sbin/pm-suspend
+		# exec /usr/sbin/pm-suspend
 	elif pm-is-supported --hibernate; then
-		exec /usr/sbin/pm-hibernate
+		# exec /usr/sbin/pm-hibernate
 	else
-		exec /sbin/poweroff
+		# exec /sbin/poweroff
 	fi
 }
 
@@ -47,16 +47,17 @@ echo "$ACTION_METHOD" > /run/powernap.state
 
 case $ACTION_METHOD in
 	0)
-		exec /usr/sbin/pm-powersave true
+		# exec /usr/sbin/pm-powersave true
 		exit ;;
 	1)
-		exec /usr/sbin/pm-suspend
+		# exec /usr/sbin/pm-suspend
+		exec systemctl suspend
 		exit ;;
 	2)
-		exec /usr/sbin/pm-hibernate
+		# exec /usr/sbin/pm-hibernate
 		exit ;;
 	3)
-		exec /sbin/poweroff
+		# exec /sbin/poweroff
 		exit ;;
 	4)
 		best_effort

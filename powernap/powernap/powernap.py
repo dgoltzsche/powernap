@@ -27,7 +27,7 @@ class PowerNap:
     def __init__(self):
         self.PKG = "powernap"
         self.CONFIG = "/etc/powernap/config"
-        self.ACTION = "/usr/sbin/powernap"
+        self.ACTION = "/usr/local/bin/powernap"
         self.RECOVER_ACTION = "/usr/sbin/pm-powersave false"
         self.ABSENT_SECONDS = sys.maxsize
         self.STAGE2_ABSENT_SECONDS = sys.maxsize

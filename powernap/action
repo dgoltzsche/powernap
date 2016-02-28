@@ -1,9 +1,9 @@
 #!/bin/sh
 #
 # If the file [ /etc/powernap/action ] is executable, then the
-# /usr/sbin/powernap binary will run it when called.
+# /usr/local/bin/powernap binary will run it when called.
 #
-# Otherwise, /usr/sbin/powernap will run one of:
+# Otherwise, /usr/local/bin/powernap will run one of:
 #   * pm-suspend
 #   * pm-hibernate
 #   * poweroff

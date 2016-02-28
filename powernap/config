@@ -29,7 +29,7 @@ ABSENT_SECONDS = 30
 
 # Grace period, after (ABSENT_SECONDS - GRACE_SECONDS) have elapsed with all of
 # the Monitors with absent activity, the system will send a Wall message for an
-# administrator to warn that the system will perform the "/usr/sbin/powernap"
+# administrator to warn that the system will perform the "/usr/local/bin/powernap"
 # action in GRACE_SECONDS.
 # The default grace period is 6 seconds.
 # Example:
