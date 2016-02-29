@@ -33,11 +33,11 @@ ACTION_METHOD="$1"
 best_effort() {
 	if [ -x "/etc/$PKG/action" ]; then
 		exec /etc/$PKG/action
-	elif pm-is-supported --suspend; then
+	#elif pm-is-supported --suspend; then
 		# exec /usr/sbin/pm-suspend
-	elif pm-is-supported --hibernate; then
+	#elif pm-is-supported --hibernate; then
 		# exec /usr/sbin/pm-hibernate
-	else
+	#else
 		# exec /sbin/poweroff
 	fi
 }
