@@ -90,7 +90,10 @@ def signal_handler(signal, frame):
         os.remove(LOCK)
     debug(logging.INFO, "Stopping %s" % powernap.PKG)
     print("exiting powernapd.")
-    sys.exit(1)
+    # not nice, this does not honor finally blocks and stuff...
+    os._exit(1)
+    # sys.exit is more clean.
+    # sys.exit(1)
 
 # Handler warns users when an USB Input device has been connected or
 # disconnected. This is only useful for [InputMonitor] to avoid errors.
@@ -336,13 +339,15 @@ def daemonize (stdin="/dev/null", stdout="/var/log/%s.log" % powernap.PKG, stder
 
 # Main program
 if __name__ == '__main__':
+    print("Powernap starting...")
     try:
         # Ensure that only one instance runs
         establish_lock()
-        daemonize()
+        # daemonize()
         # Run the main powernapd loop
         MONITORS = powernap.get_monitors()
         debug(logging.INFO, "Starting %s" % powernap.PKG)
+        print("Powernap entering main loop...")
         powernapd_loop()
     finally:
         # Clean up the lock file
