@@ -117,9 +117,14 @@ STAGE2_ACTION_METHOD = 4
 # One configuration line contains an identifier, then as a 
 # semicolon-separated list the interface, download and upload bandwidth
 # limit in Mbps (Megabit per second)
+#
+# Note: This monitor internally uses "bwm-ng", you must(!) have this tool
+# installed for this monitor to work!
+#
 # Example:
 #   local = eth0;10;1
 #   wifi = wlan0:6;1
+#
 [WoLMonitor]
 #lan = eth0;10;1
 
