@@ -112,6 +112,15 @@ STAGE2_ACTION_METHOD = 4
 ####                          MONITORS                                  ####
 ############################################################################
 
+# The [NetworkMonitor] monitors current network traffic and prevents 
+# powersaving actions if network traffic is higher than configured limits
+# One configuration line contains an identifier, then as a 
+# semicolon-separated list the interface, download and upload bandwidth
+# limit in Mbps (Megabit per second)
+# Example:
+#   local = eth0;10;1
+#   wifi = wlan0:6;1
+
 # The [WoLMonitor] section lists all ports on which the WoL Monitor will be
 # listening for WoL Packets for any of the network interfaces.
 # Once a WoL Packet is received, the WoLMonitor will compare the data received
@@ -224,4 +233,3 @@ mouse = y
 #  sdb = n
 [DiskMonitor]
 #sda = y
-

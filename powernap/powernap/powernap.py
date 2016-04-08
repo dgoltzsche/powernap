@@ -19,7 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import configparser, sys, re, os
-from .monitors import ProcessMonitor, LoadMonitor, InputMonitor, TCPMonitor, UDPMonitor, IOMonitor, WoLMonitor, ConsoleMonitor, DiskMonitor
+from .monitors import ProcessMonitor, LoadMonitor, InputMonitor, TCPMonitor, UDPMonitor, IOMonitor, WoLMonitor, ConsoleMonitor, DiskMonitor, NetworkMonitor
 
 
 class PowerNap:
@@ -165,6 +165,9 @@ class PowerNap:
             self.MONITORS.append({"monitor":monitor, "name":items[0], "port":eval(items[1]), "absent":self.ABSENT_SECONDS})
         if monitor == "DiskMonitor" and (items[1] == "y" or items[1] == "yes"):
             self.MONITORS.append({"monitor":monitor, "name":items[0], "absent":self.ABSENT_SECONDS})
+        if monitor == "NetworkMonitor":
+            value = items[1].split(";")
+            self.MONITORS.append({"monitor":monitor, "name":items[0], "iface":value[0], "bwin":int(value[1]), "bwout":int(value[2]), "absent":self.ABSENT_SECONDS})
 
     def get_monitors(self):
         monitor = []
@@ -187,6 +190,8 @@ class PowerNap:
                 p = TCPMonitor.TCPMonitor(config)
             if config["monitor"] == "DiskMonitor":
                 p = DiskMonitor.DiskMonitor(config)
+            if config["monitor"] == "NetworkMonitor":
+                p = NetworkMonitor.NetworkMonitor(config)
             monitor.append(p)
 
         return monitor
