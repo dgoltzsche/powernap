@@ -120,6 +120,8 @@ STAGE2_ACTION_METHOD = 4
 # Example:
 #   local = eth0;10;1
 #   wifi = wlan0:6;1
+[WoLMonitor]
+#lan = eth0;10;1
 
 # The [WoLMonitor] section lists all ports on which the WoL Monitor will be
 # listening for WoL Packets for any of the network interfaces.
