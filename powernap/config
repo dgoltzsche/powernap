@@ -125,7 +125,7 @@ STAGE2_ACTION_METHOD = 4
 #   local = eth0;10000;1000
 #   wifi = wlan0:6000;1000
 #
-[WoLMonitor]
+[NetworkMonitor]
 #lan = eth0;10000;1000
 
 # The [WoLMonitor] section lists all ports on which the WoL Monitor will be
