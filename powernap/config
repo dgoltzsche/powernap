@@ -65,7 +65,7 @@ WARN = y
 # The default debug level is 0.
 #    DEBUG = 1
 #    DEBUG = 2
-DEBUG = 2
+DEBUG = 0
 
 # The powernap daemon can watch for changes in the configuration file in
 # /etc/powernap directory without having to restart it.
@@ -112,6 +112,19 @@ STAGE2_ACTION_METHOD = 4
 ####                          MONITORS                                  ####
 ############################################################################
 
+# The [PlexMonitor] monitors Plex clients connected to a Plex server and 
+# prevents suspend when clients are playing something.
+# You need to provide the URL of the Plex server and the X-Plex-Token.
+# 
+# Note: This monitor requires the "plexapi" python package to be installed
+#       on the system!
+# 
+# Example:
+#   <somename> = http://localhost:32400;<X-Plex-Token>
+#
+[PlexMonitor]
+# plex = http://localhost:32400;<X-Plex-Token>
+
 # The [NetworkMonitor] monitors current network traffic and prevents 
 # powersaving actions if network traffic is higher than configured limits
 # One configuration line contains an identifier, then as a 
@@ -126,7 +139,7 @@ STAGE2_ACTION_METHOD = 4
 #   wifi = wlan0:6000;1000
 #
 [NetworkMonitor]
-#lan = eth0;10000;1000
+# lan = enp5s0;10000;1000
 
 # The [WoLMonitor] section lists all ports on which the WoL Monitor will be
 # listening for WoL Packets for any of the network interfaces.
@@ -138,8 +151,8 @@ STAGE2_ACTION_METHOD = 4
 # Example:
 #  wol1052 = 1052
 [WoLMonitor]
-wol7 = 7
-wol9 = 9
+# wol7 = 7
+# wol9 = 9
 
 # The [ConsoleMonitor] section enables or disables  monitoring of activity
 # in the Console (tty), also tracking activity from any locally connected
@@ -149,7 +162,7 @@ wol9 = 9
 #  console = y
 #  console = n
 [ConsoleMonitor]
-ptmx = y
+# ptmx = y
 
 # The [ProcessMonitor] section lists all the processes to Monitor by using
 # regular expressions.
@@ -176,7 +189,7 @@ ptmx = y
 #   threshold = 0
 #   threshold = n
 [LoadMonitor]
-threshold = n
+# threshold = n
 
 # The [TCPMonitor] section lists all the TCP ports on which to watch for
 # established connections using netstat(8). It supports both, single TCP
@@ -188,7 +201,7 @@ threshold = n
 #  https = 443
 #  other = 64500-65000
 [TCPMonitor]
-ssh = 22
+# ssh = 22
 
 # The [UDPMonitor] section lists all the UDP ports on which to listen
 # for data.
@@ -222,8 +235,8 @@ ssh = 22
 #  keyboard = n
 #  keyboard = y
 [InputMonitor]
-keyboard = y
-mouse = y
+# keyboard = y
+# mouse = y
 
 # The [DiskMonitor] section lists the disk devices for which to track
 # standby/sleep status.  If any of the devices are active/idle the

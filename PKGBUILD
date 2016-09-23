@@ -51,6 +51,7 @@ install -Dm644 "$srcdir/powernap-$pkgver/powernap/monitors/TCPMonitor.py" "$pkgd
 install -Dm644 "$srcdir/powernap-$pkgver/powernap/monitors/UDPMonitor.py" "$pkgdir/usr/lib/python3.5/site-packages/powernap/monitors/UDPMonitor.py"
 install -Dm644 "$srcdir/powernap-$pkgver/powernap/monitors/WoLMonitor.py" "$pkgdir/usr/lib/python3.5/site-packages/powernap/monitors/WoLMonitor.py"
 install -Dm644 "$srcdir/powernap-$pkgver/powernap/monitors/NetworkMonitor.py" "$pkgdir/usr/lib/python3.5/site-packages/powernap/monitors/NetworkMonitor.py"
+install -Dm644 "$srcdir/powernap-$pkgver/powernap/monitors/PlexMonitor.py" "$pkgdir/usr/lib/python3.5/site-packages/powernap/monitors/PlexMonitor.py"
 install -Dm644 "$srcdir/powernap-$pkgver/powernap/monitors/__init__.py" "$pkgdir/usr/lib/python3.5/site-packages/powernap/monitors/__init__.py"
 install -Dm644 "$srcdir/powernap-$pkgver/powernap/powernap.py" "$pkgdir/usr/lib/python3.5/site-packages/powernap/powernap.py"
 install -Dm644 "$srcdir/powernap-$pkgver/powernap/__init__.py" "$pkgdir/usr/lib/python3.5/site-packages/powernap/__init__.py"
