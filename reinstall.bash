@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -rf src/ pkg/
 sudo systemctl disable powernapd
 sudo systemctl stop powernapd
 ./uninstall.bash

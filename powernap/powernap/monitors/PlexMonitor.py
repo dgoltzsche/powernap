@@ -19,7 +19,7 @@
 import os, re, subprocess
 import threading 
 import time
-from logging import error, debug, info, warn
+import logging
 from plexapi.server import PlexServer
 
 class PlexMonitor():
@@ -31,6 +31,9 @@ class PlexMonitor():
         self._token = config['token']
         self._baseurl = config['baseurl']
         self._absent_seconds = 0
+        logging.getLogger("requests").setLevel(logging.WARNING)
+        logging.getLogger("plexapi").setLevel(logging.WARNING)
+        print(logging.Logger.manager.loggerDict)
 
     # Check for plex clients
     def active(self):
