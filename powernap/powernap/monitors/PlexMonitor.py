@@ -21,6 +21,7 @@ import threading
 import time
 import logging
 from plexapi.server import PlexServer
+from plexapi.exceptions import NotFound
 
 class PlexMonitor():
 
@@ -37,7 +38,10 @@ class PlexMonitor():
 
     # Check for plex clients
     def active(self):
-        plex = PlexServer(self._baseurl, self._token)
+        try:
+            plex = PlexServer(self._baseurl, self._token)
+        except NotFound:
+            return False
         for client in plex.clients():
             if client.isPlayingMedia():
                 return True
