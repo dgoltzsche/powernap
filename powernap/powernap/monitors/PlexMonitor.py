@@ -33,7 +33,7 @@ class PlexMonitor():
         self._baseurl = config['baseurl']
         self._absent_seconds = 0
         logging.getLogger("requests").setLevel(logging.WARNING)
-        logging.getLogger("plexapi").setLevel(logging.WARNING)
+        logging.getLogger("plexapi").setLevel(logging.CRITICAL)
         print(logging.Logger.manager.loggerDict)
 
     # Check for plex clients
